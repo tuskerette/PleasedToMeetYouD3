@@ -1,0 +1,3 @@
+- Hi, I am Valeria.
+- And I am d3, pleased to meet you.
+- My pleasure.
