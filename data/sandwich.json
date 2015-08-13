@@ -1,0 +1,24 @@
+{
+  "sandwich": [
+    {
+      "ingredient": "tomato",
+      "price": 20,
+      "color": "#f00"
+    },
+    {
+      "ingredient": "cheese",
+      "price": 30,
+      "color": "#ffc"
+    },
+    {
+      "ingredient": "prosciutto",
+      "price": 50,
+      "color": "#900"
+    },
+    {
+      "ingredient": "arugula",
+      "price": 5,
+      "color": "#090"
+    }
+  ]
+}
