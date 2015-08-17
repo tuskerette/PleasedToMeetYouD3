@@ -8,16 +8,17 @@
 </head>
 <body>
 <script type="text/javascript" src="d3/d3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script>
 
 
   var w = 600,
       h = 200;
 
-  var dataset = [{ "x": 20, "y": 35, "type":"rect", "color" : "#f00", "key": "tomato", "value" : 20 },
-                { "x": 24, "y": 50, "type":"rect", "color" : "#ffc", "key": "cheese", "value": 30},
+  var dataset = [{ "x": 20, "y": 35, "type":"rect", "color" : "#f00", "key": "pomodoro", "value" : 20 },
+                { "x": 24, "y": 50, "type":"rect", "color" : "#ffc", "key": "mozzarela", "value": 30},
                 { "x": 21, "y": 63, "type":"rect", "color" : "#900", "key": "prosciutto", "value": 50},
-                { "x": 27, "y": 75, "type":"rect", "color" : "#090", "key": "arugula", "value": 5}];
+                { "x": 27, "y": 75, "type":"rect", "color" : "#090", "key": "rucola", "value": 5}];
 
   var scaleX = d3.scale.linear()
           .domain([0,100])
@@ -44,6 +45,11 @@
         return d.map(function(d) { return [scaleX(d.x),scaleY(d.y)].join(","); }).join(" ");})
     .style("fill", "#D6AD33");
 
+  var tip = d3.tip()
+    .attr("class", "d3-tip")
+    .direction('w')
+    .html(function(d) { return d.key; });
+
   var ingredients = svg.selectAll("rect")
    .data(dataset)
    .enter()
@@ -52,9 +58,11 @@
    .attr("y", function (d) { return d.y; })
    .attr("width", 100)
    .attr("height", 15)
-   .style("fill", function(d) {return d.color; });
+   .style("fill", function(d) {return d.color; })
+   .on('mouseover', tip.show)
+   .on('mouseout', tip.hide);
 
-
+  svg.call(tip);
 
 
 

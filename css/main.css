@@ -1,3 +1,6 @@
+body {
+  background-color: rgba(255, 224, 255, 0.6);
+}
 .title {
   float: left;
   clear: both;
