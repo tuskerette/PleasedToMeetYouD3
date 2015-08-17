@@ -12,7 +12,7 @@
 
 
   var w = 600,
-      h = 300;
+      h = 200;
 
   var dataset = [{ "x": 20, "y": 35, "type":"rect", "color" : "#f00", "key": "tomato", "value" : 20 },
                 { "x": 24, "y": 50, "type":"rect", "color" : "#ffc", "key": "cheese", "value": 30},
@@ -27,21 +27,22 @@
           .domain([0,100])
           .range([0,120]);
 
-  var poly = [{"x":30, "y":100}, {"x":50,"y":130}, {"x":90,"y":130}, {"x":110,"y":100}];
+  var poly = [{"x":10, "y":75}, {"x":40,"y":95}, {"x":80,"y":95}, {"x":110,"y":75}];
+  var polyTop = [{"x":10, "y":30}, {"x":40,"y":10}, {"x":80,"y":10}, {"x":110,"y":30}];
 
   var svg = d3.select("body").append("svg")
                              .attr("width", w)
                              .attr("height", h)
                              .attr("class", "sandwich")
-                             .attr("viewBox", "0 0 100 140");
+                             .attr("viewBox", "0 0 100 120");
 
   var bread = svg.selectAll("polygon")
-    .data([poly])
+    .data([poly, polyTop])
     .enter()
     .append("polygon")
     .attr("points",function(d) {
         return d.map(function(d) { return [scaleX(d.x),scaleY(d.y)].join(","); }).join(" ");})
-    .style("fill", "#fc9");
+    .style("fill", "#D6AD33");
 
   var ingredients = svg.selectAll("rect")
    .data(dataset)
